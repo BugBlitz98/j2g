@@ -10,7 +10,7 @@ export default function About() {
         </svg>
         <div className="mt-4 max-w-screen-md items-center mx-auto">
           <h1 className={"text-black text-bold text-2xl"}>Create beautiful graphs from JSON data in your browser</h1>
-          <p className={"text-black text-bold text-xl opacity-95"} >JSONtograph is a powerful JSON visualization and manipulation tool designed to simplify the process of understanding and working with JSON data.the tool's capability to edit JSON data directly within the 2D and 3D visualization with multiple direction, allowing users to modify and update data seamlessly</p>
+          <p className={"text-black text-bold text-xl opacity-95 italic"} >JSONtograph is a powerful JSON visualization and manipulation tool designed to simplify the process of understanding and working with JSON data.the tool's capability to edit JSON data directly within the 2D and 3D visualization with multiple direction, allowing users to modify and update data seamlessly</p>
         </div>
       </div>
   )

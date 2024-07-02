@@ -10,6 +10,7 @@ import { Editor } from '@monaco-editor/react';
 import { useStored } from './store/useStore';
 import { useEffect, useRef, useState } from 'react';
 import "allotment/dist/style.css";
+import Loader from './Loader';
 function App() {
 
   const animation = useStored((state) => state.animation);
@@ -20,6 +21,7 @@ function App() {
   const isDownload = useStored((state) => state.isDownload);
   const setIsDownload = useStored((state) => state.setIsDownload);
   const fullScreen = useStored((state) => state.fullScreen);
+  const [isLoading, setIsLoading] = useState(true);
   const ref = useRef(null);
 
   const direction = useStored((state) => state.direction);
@@ -128,7 +130,9 @@ function App() {
     setNodes(nodes)
     setEdges(edges)
 
-
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // Adjust the timeout duration as needed
   }, []);
 
   function handleEditorChange(value, event) {
@@ -142,6 +146,21 @@ function App() {
     setEdges(edges)
 
   }
+
+  useEffect(() => {
+    if (isDownload) {
+      setIsDownload(false);
+      // console.log('den')
+      const data = ref.current.exportCanvas();
+      const link = document.createElement('a');
+      link.setAttribute('href', data);
+      link.setAttribute('target', '_blank');
+      link.setAttribute('download', 'json2graph.png');
+      link.click();
+
+    }
+
+  }, [isDownload])
 
 
   const lightTheme = {
@@ -201,77 +220,78 @@ function App() {
     }
   };
   return (
-    <><header> <Header /></header>
-      <main className="flex h-[calc(100vh-84px)] w-full flex-row md:flex-row items-center mx-auto bg-white">
+    <>
+       {isLoading ? <Loader /> : <><header> <Header /></header>
+        <main className="flex h-[calc(100vh-84px)] w-full flex-row md:flex-row items-center mx-auto bg-white">
 
-        <Allotment
-          className="!relative flex h-[calc(100vh-84px)]"
-          proportionalLayout={false}
-        >
-          {!fullScreen && <Allotment.Pane
-            className="h-full bg-white dark:bg-vsdark-500 dark:text-white"
-            preferredSize={450}
-            minSize={100}
-            maxSize={800}
-            visible={true}
+          <Allotment
+            className="!relative flex h-[calc(100vh-84px)]"
+            proportionalLayout={false}
           >
-            <div
-              className="order-1 lg:order-2 from-white  relative  bg-white to-white">
-              <div className="flex flex-row">
-                <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div>
-                <div className="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>
-              </div>
-              <div className="px-4 lg:px-8 py-3">
-                <div className="flex flex-row space-x-2">
-                  <div className="h-3 w-3 rounded-full bg-red-600"></div>
-                  <div className="h-3 w-3 rounded-full bg-orange-500"></div>
-                  <div className="h-3 w-3 rounded-full bg-green-400"></div>
+            {!fullScreen && <Allotment.Pane
+              className="h-full bg-white dark:bg-vsdark-500 dark:text-white"
+              preferredSize={450}
+              minSize={100}
+              maxSize={800}
+              visible={true}
+            >
+              <div
+                className="order-1 lg:order-2 from-white  relative  bg-white to-white">
+                <div className="flex flex-row">
+                  <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div>
+                  <div className="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>
+                </div>
+                <div className="px-4 lg:px-8 py-3">
+                  <div className="flex flex-row space-x-2">
+                    <div className="h-3 w-3 rounded-full bg-red-600"></div>
+                    <div className="h-3 w-3 rounded-full bg-orange-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-green-400"></div>
+                  </div>
+                </div>
+                <div className="overflow-hidden">
+                  <Editor
+                    className="h-screen md:h-full"
+                    language="json"
+                    theme="white"
+                    height="90vh"
+                    // defaultValue={data}
+                    value={JSON.stringify(json, null, 2)}
+                    // onMount={handleEditorDidMount}
+                    onChange={handleEditorChange}
+                  />
                 </div>
               </div>
-              <div className="overflow-hidden">
-                <Editor
-                  className="h-screen md:h-full"
-                  language="json"
-                  theme="white"
-                  height="90vh"
-                  // defaultValue={data}
-                  value={JSON.stringify(json, null, 2)}
-                  // onMount={handleEditorDidMount}
-                  onChange={handleEditorChange}
-                />
+            </Allotment.Pane>}
+            <Allotment.Pane
+              className="h-full bg-white dark:bg-vsdark-500 dark:text-white"
+
+              visible={true}
+            >
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0
+              }}>
+
+                {Array.isArray(nodes) && nodes.length > 0 && <GraphCanvas
+                  ref={ref}
+                  nodes={nodes}
+                  edges={edges}
+                  theme={lightTheme}
+                  cameraMode={animation}
+                  layoutType={direction}
+                  sizingType="centrality"
+
+                //draggable 
+                >
+                  <directionalLight position={[0, 5, -4]} intensity={3} />
+                </GraphCanvas>}
               </div>
-            </div>
-          </Allotment.Pane>}
-          <Allotment.Pane
-            className="h-full bg-white dark:bg-vsdark-500 dark:text-white"
 
-            visible={true}
-          >
-            <div style={{
-              position: 'absolute',
-              top: 0,
-              bottom: 0,
-              left: 0,
-              right: 0
-            }}>
-
-              {Array.isArray(nodes) && nodes.length > 0 && <GraphCanvas
-                ref={ref}
-                nodes={nodes}
-                edges={edges}
-                theme={lightTheme}
-                cameraMode={animation}
-                layoutType={direction}
-                sizingType="centrality"
-
-              //draggable 
-              >
-                <directionalLight position={[0, 5, -4]} intensity={3} />
-              </GraphCanvas>}
-            </div>
-
-          </Allotment.Pane>
-        </Allotment>
+            </Allotment.Pane>
+          </Allotment>
 
 
 
@@ -279,10 +299,10 @@ function App() {
 
 
 
-      </main>
-      <Step />
-      <About />
-      <footer> <Footer /></footer></>
+        </main>
+        <Step />
+        <About />
+        <footer> <Footer /></footer></>}</>
   );
 }
 

@@ -46,7 +46,7 @@ const Header = () => {
                     className="flex items-center space-x-3 rtl:space-x-reverse"
                 >
 
-                    <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white md:text-4xl lg:text-4xl "><span className="bg-gradient-to-tl from-slate-600 via-slate-100 to-slate-600 bg-clip-text text-transparent">JSON2GRAPH</span></h2>
+                    <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white md:text-4xl lg:text-4xl "><span className="bg-gradient-to-tl from-slate-600 via-slate-100 to-slate-600 bg-clip-text text-transparent">JSON2GRAPH</span></h1>
                 </a>
                 {/* <button
                     data-collapse-toggle="navbar-default"

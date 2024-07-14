@@ -25,7 +25,7 @@ const Footer = () => {
                 <a href="#" className="hover:underline">
                     json2graph.com
                 </a>
-                . All Rights Reserved.
+                . All Rights Reserved. | Created by <a href="https://www.linkedin.com/in/animesh-manna-428633157/">@animesh</a>
             </span>
 
 

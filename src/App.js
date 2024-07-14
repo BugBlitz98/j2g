@@ -11,6 +11,7 @@ import { useStored } from './store/useStore';
 import { useEffect, useRef, useState } from 'react';
 import "allotment/dist/style.css";
 import Loader from './Loader';
+import { Helmet } from 'react-helmet';
 function App() {
 
   const animation = useStored((state) => state.animation);
@@ -221,7 +222,25 @@ function App() {
   };
   return (
     <>
-       {isLoading ? <Loader /> : <><header> <Header /></header>
+      <Helmet>
+        <title>Online JSON to Graph Visualization</title>
+      </Helmet>
+      <Helmet>"
+        <meta name="description" content="Free online transfrom json to stunning 2d and 3d graph visualization with our json2graph tools.easily understand and download the graph.try it now" />
+      </Helmet>
+      <Helmet>
+        <meta property="og:title" content="JSON to Graph Visualization" />
+        <meta property="og:description" content="convert json to stunning 2d and 3d graph visualization with our json2graph tools" />
+        <meta property="og:image" content={"https://www.json2graph.com/logo.png"} />
+        <meta property="og:url" content={"https://www.json2graph.com"} />
+        <meta property="og:type" content="website" />
+      </Helmet>
+      <Helmet>
+        <meta name="twitter:title" content={"JSON to Graph Visualization"} />
+        <meta name="twitter:description" content={"convert json to stunning 2d and 3d graph visualization with our json2graph tools"} />
+        <meta name="twitter:image" content={"https://www.json2graph.com/logo.png"} />
+      </Helmet>
+      {isLoading ? <Loader /> : <><header> <Header /></header>
         <main className="flex h-[calc(100vh-84px)] w-full flex-row md:flex-row items-center mx-auto bg-white">
 
           <Allotment

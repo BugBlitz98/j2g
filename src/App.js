@@ -23,6 +23,10 @@ function App() {
   const setIsDownload = useStored((state) => state.setIsDownload);
   const fullScreen = useStored((state) => state.fullScreen);
   const [isLoading, setIsLoading] = useState(true);
+  const darkMode = useStored((state) => state.darkMode);
+  const getStarted = useStored((state) => state.getStarted);
+  const setStarted = useStored((state) => state.setStarted);
+  const [kok, setKok] = useState(0);
   const ref = useRef(null);
 
   const direction = useStored((state) => state.direction);
@@ -166,7 +170,7 @@ function App() {
 
   const lightTheme = {
     canvas: {
-      background: '#fff',
+      background: darkMode?'#000':'#fff',
       fog: '#fff'
     },
     node: {
@@ -176,7 +180,7 @@ function App() {
       selectedOpacity: 1,
       inactiveOpacity: 0.2,
       label: {
-        color: '#000',
+        color:  darkMode?'#fff':'#000',
         activeColor: '#1DE9AC'
       },
       subLabel: {
@@ -194,7 +198,7 @@ function App() {
       activeFill: '#1DE9AC'
     },
     edge: {
-      fill: '#000',
+      fill:  darkMode?'#fff':'#000',
       activeFill: '#1DE9AC',
       opacity: 1,
       selectedOpacity: 1,
@@ -206,8 +210,8 @@ function App() {
       }
     },
     arrow: {
-      fill: '#000',
-      activeFill: '#000'
+      fill:  darkMode?'#fff':'#000',
+      activeFill:  darkMode?'#fff':'#000'
     },
     cluster: {
       stroke: '#D8E6EA',
@@ -220,6 +224,11 @@ function App() {
       }
     }
   };
+
+  useEffect(() => {
+    
+    setKok(prevKey => prevKey + 1)
+  },[darkMode]);
   return (
     <>
       <Helmet>
@@ -241,9 +250,9 @@ function App() {
         <meta name="twitter:image" content={"https://www.json2graph.com/logo.png"} />
       </Helmet>
       {isLoading ? <Loader /> : <><header> <Header /></header>
-        <main className="flex h-[calc(100vh-84px)] w-full flex-row md:flex-row items-center mx-auto bg-white">
+        <main className="mb-4 flex h-[calc(100vh-84px)] w-full flex-row md:flex-row items-center mx-auto bg-white">
 
-          <Allotment
+         {getStarted && <Allotment
             className="!relative flex h-[calc(100vh-84px)]"
             proportionalLayout={false}
           >
@@ -255,7 +264,7 @@ function App() {
               visible={true}
             >
               <div
-                className="order-1 lg:order-2 from-white  relative  bg-white to-white">
+                className={darkMode?"order-1 lg:order-2 from-white  relative bg-black to-white":"order-1 lg:order-2 from-white bg-white  relative to-white"}>
                 <div className="flex flex-row">
                   <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div>
                   <div className="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>
@@ -271,7 +280,7 @@ function App() {
                   <Editor
                     className="h-screen md:h-full"
                     language="json"
-                    theme="white"
+                    theme={darkMode?"hc-black":"white"}
                     height="90vh"
                     // defaultValue={data}
                     value={JSON.stringify(json, null, 2)}
@@ -296,6 +305,7 @@ function App() {
 
                 {Array.isArray(nodes) && nodes.length > 0 && <GraphCanvas
                   ref={ref}
+                  key={kok}
                   nodes={nodes}
                   edges={edges}
                   theme={lightTheme}
@@ -310,9 +320,35 @@ function App() {
               </div>
 
             </Allotment.Pane>
-          </Allotment>
+          </Allotment>}
 
+          {!getStarted && <>
+            <section className="mt-20 bg-white">
+    <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
+        
+        <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none bg-gradient-to-tl from-slate-800 via-violet-500 to-zinc-400 bg-clip-text text-transparent md:text-5xl lg:text-6xl ">Transform JSON into Interactive 3D Graphs</h1>
+        <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 bg-gradient-to-tl from-slate-700 via-slate-950 to-gray-950 bg-clip-text text-transparent">Quickly turn your JSON data into stunning, interactive 3D graphs. Explore, zoom, and analyze your data with ease—perfect for developers and data enthusiasts looking to visualize information effortlessly</p>
+        <div className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+            
+            <button onClick={()=>{setStarted(!getStarted)}} className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 ">
+               Get Started
+            </button>  
+        </div>
 
+        {/* <div className="px-4 mx-auto text-center md:max-w-screen-md lg:max-w-screen-lg lg:px-36">
+  <span className="font-bold text-gray-500 uppercase tracking-wider">Powered By</span>
+  <div className="flex flex-wrap justify-center items-center mt-8 text-gray-600">
+    <a href="https://x.com/BlitzBug98" className="flex items-center space-x-3 mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400">
+      <img src="https://www.jsonviewer.tools/logo.png" className="" width={70} alt="jsonviewer.tools logo" />
+      <span className="text-lg font-semibold">jsonviewer.tools</span>
+    </a>
+  </div>
+</div> */}
+
+    </div>
+</section>
+          </>
+}
 
 
 

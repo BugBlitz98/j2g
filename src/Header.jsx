@@ -16,9 +16,11 @@ const Header = () => {
     const viewType = useStored((state) => state.viewType);
     const fullScreen = useStored((state) => state.fullScreen);
     const setFullScreen = useStored((state) => state.setFullScreen);
-   
+    const darkMode = useStored((state) => state.darkMode);
+    const setDarkMode = useStored((state) => state.setDarkMode);
+    const getStarted = useStored((state) => state.getStarted);
 
-
+    const setStarted = useStored((state) => state.setStarted);
     const handleClick = () => {
         // Get the height of the viewport
         const viewportHeight = window?.innerHeight || document?.documentElement?.clientHeight;
@@ -39,16 +41,20 @@ const Header = () => {
     }
 
     return (
-        <nav className="bg-white">
-            <div className="max-w-full flex flex-wrap items-center justify-between mx-auto p-4 bg-[#273036]">
+        <nav className={getStarted?"bg-black ":"bg-white"}>
+            <div className="max-w-full flex flex-wrap items-center justify-between mx-auto p-4">
                 <a
                     href="/" passHref
                     className="flex items-center space-x-3 rtl:space-x-reverse"
                 >
 
-                    <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white md:text-4xl lg:text-4xl "><span className="bg-gradient-to-tl from-slate-600 via-slate-100 to-slate-600 bg-clip-text text-transparent">JSON2GRAPH</span></h1>
+                    <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white md:text-4xl lg:text-4xl "><span className="bg-gradient-to-tl from-slate-700 via-slate-400 to-slate-800 bg-clip-text text-transparent">JSON2GRAPH</span></h1>
                 </a>
-                {/* <button
+               
+                {!getStarted &&  
+                
+              <>
+               <button
                     data-collapse-toggle="navbar-default"
                     type="button"
                     className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -74,8 +80,26 @@ const Header = () => {
                             d="M1 1h15M1 7h15M1 13h15"
                         />
                     </svg>
-                </button> */}
-                <div className="flex items-center gap-2">
+                </button>
+                <div className="hidden w-full md:block md:w-auto" id="navbar-default">
+                <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
+                  <li>
+                    <a href="#howitworks" className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">How it Works</a>
+                  </li>
+
+                  <li>
+                    <a href="#about" className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">About</a>
+                  </li>
+
+                  <li>
+                    <button onClick={()=>{setStarted(!getStarted)}} className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Get Started</button>
+                  </li>
+                  
+                </ul>
+              </div>
+              </> 
+                }
+               {getStarted && <div className="flex items-center gap-2">
                     <button
                         className="h-8 w-8 rounded-md border border-[#e4e8ee] p-[5px] text-gray-700"
                         type="button"
@@ -433,7 +457,25 @@ const Header = () => {
                                 } rounded-full shadow-md`}
                         />
                     </div>
-                </div>
+
+                    <label
+                        htmlFor="toggle"
+                        className="toggle-label block overflow-hidden h-6 rounded-full text-white cursor-pointer"
+                    >Dark Mode</label>
+                    <div
+                        className={`relative inline-block w-12 h-6 transition duration-200 ease-in-out ${darkMode ? 'bg-green-400' : 'bg-gray-400'
+                            } rounded-full cursor-pointer`}
+                        onClick={() => {
+                            setDarkMode(!darkMode)
+                        }}
+                    >
+
+                        <div
+                            className={`absolute left-0 inline-block w-6 h-6 transition transform duration-200 ease-in-out ${darkMode ? 'translate-x-full bg-green-200' : 'bg-white'
+                                } rounded-full shadow-md`}
+                        />
+                    </div>
+                </div>}
             </div>
 
         </nav>

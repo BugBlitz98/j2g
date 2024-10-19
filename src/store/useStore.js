@@ -7,6 +7,8 @@ const initialStates = {
   direction: "forceDirected3d",
   animation: "orbit",
   fullScreen: false,
+  darkMode: false,
+  getStarted: false,
 };
 
 export const useStored = create(
@@ -18,6 +20,8 @@ export const useStored = create(
       setAnimation: (value) => set({ animation: value }),
       setIsDownload: (value) => set({ isDownload: value }),
       setFullScreen: (value) => set({ fullScreen: value }),
+      setDarkMode: (value) => set({ darkMode: value }),
+      setStarted: (value) => set({ getStarted: value }),
     }),
     {
       name: "config",

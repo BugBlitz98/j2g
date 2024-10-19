@@ -81,18 +81,18 @@ const Header = () => {
                         />
                     </svg>
                 </button>
-                <div className="hidden w-full md:block md:w-auto" id="navbar-default">
+                <div className={isOpen?"w-full md:block md:w-auto":"hidden w-full md:block md:w-auto"} id="navbar-default">
                 <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
                   <li>
-                    <a href="#howitworks" className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">How it Works</a>
+                    <a href="#howitworks" className="block py-2 px-3 text-blue-700  rounded md:bg-transparent md:p-0  " aria-current="page">How it Works</a>
                   </li>
 
                   <li>
-                    <a href="#about" className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">About</a>
+                    <a href="#about" className="block py-2 px-3 text-blue-700  rounded md:bg-transparent  md:p-0  " aria-current="page">About</a>
                   </li>
 
                   <li>
-                    <button onClick={()=>{setStarted(!getStarted)}} className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Get Started</button>
+                    <button onClick={()=>{setStarted(!getStarted)}} className="block py-2 px-3 text-blue-700  rounded md:bg-transparent  md:p-0  " aria-current="page">Get Started</button>
                   </li>
                   
                 </ul>

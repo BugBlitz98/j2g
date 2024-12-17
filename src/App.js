@@ -12,6 +12,7 @@ import { useEffect, useRef, useState } from 'react';
 import "allotment/dist/style.css";
 import Loader from './Loader';
 import { Helmet } from 'react-helmet';
+import InfoModal from './components/InfoModal';
 function App() {
 
   const animation = useStored((state) => state.animation);
@@ -28,7 +29,7 @@ function App() {
   const setStarted = useStored((state) => state.setStarted);
   const [kok, setKok] = useState(0);
   const ref = useRef(null);
-
+  const [isOpen, setIsOpen] = useState(false);
   const direction = useStored((state) => state.direction);
   const transformToReaflowFormat = (data) => {
     let nodes = [];
@@ -330,7 +331,10 @@ function App() {
         <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 bg-gradient-to-tl from-slate-700 via-slate-950 to-gray-950 bg-clip-text text-transparent">Quickly turn your JSON data into stunning, interactive 3D graphs. Explore, zoom, and analyze your data with ease—perfect for developers and data enthusiasts looking to visualize information effortlessly</p>
         <div className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
             
-            <button onClick={()=>{setStarted(!getStarted)}} className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 ">
+            <button onClick={()=>{
+              setIsOpen(true)
+              //setStarted(!getStarted)
+              }} className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 ">
                Get Started
             </button>  
         </div>
@@ -350,14 +354,18 @@ function App() {
           </>
 }
 
-
+<InfoModal setIsOpen={setIsOpen} isOpen={isOpen} setStarted={setStarted}/>
 
 
 
         </main>
         <Step />
         <About />
-        <footer> <Footer /></footer></>}</>
+        <footer> <Footer /></footer>
+       
+        </>
+        
+        }</>
   );
 }
 

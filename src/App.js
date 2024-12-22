@@ -251,7 +251,7 @@ function App() {
         <meta name="twitter:image" content={"https://www.json2graph.com/logo.png"} />
       </Helmet>
       {isLoading ? <Loader /> : <><header> <Header /></header>
-        <main className="mb-4 flex h-[calc(100vh-84px)] w-full flex-row md:flex-row items-center mx-auto bg-white">
+        <main className="mb-4 flex h-[calc(100vh-84px)] w-full flex-row md:flex-row items-center mx-auto ">
 
          {getStarted && <Allotment
             className="!relative flex h-[calc(100vh-84px)]"
@@ -324,10 +324,10 @@ function App() {
           </Allotment>}
 
           {!getStarted && <>
-            <section className="mt-20 bg-white">
+            <section className="mt-20">
     <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
         
-        <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none bg-gradient-to-tl from-slate-800 via-violet-500 to-zinc-400 bg-clip-text text-transparent md:text-5xl lg:text-6xl ">Transform JSON into Interactive 3D Graphs</h1>
+        <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none bg-gradient-to-tl from-slate-800 via-violet-500 to-zinc-400 bg-clip-text text-transparent md:text-5xl lg:text-6xl ">Transform JSON into Interactive Graphs</h1>
         <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 bg-gradient-to-tl from-slate-700 via-slate-950 to-gray-950 bg-clip-text text-transparent">Quickly turn your JSON data into stunning, interactive 3D graphs. Explore, zoom, and analyze your data with ease—perfect for developers and data enthusiasts looking to visualize information effortlessly</p>
         <div className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
             

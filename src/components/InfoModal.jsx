@@ -30,9 +30,9 @@ const handleImageClick = (action) => {
           <div className="flex min-h-full items-center justify-center p-4">
             <DialogPanel
               transition
-              className="w-full max-w-lg rounded-xl bg-gray-400 p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
+              className="w-full max-w-2xl  rounded-xl bg-gray-500 p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
             >
-              <DialogTitle as="h3" className="text-base/7 font-medium text-black">
+              <DialogTitle as="h3" className="mb-4 text-base/7 font-medium text-black">
                Choose Style
               </DialogTitle>
             {/* Grid with clickable images */}
@@ -50,7 +50,7 @@ const handleImageClick = (action) => {
                                             className="object-cover w-full h-32"
                                         />
                                         <p className="text-center mt-2 text-sm text-white group-hover:text-yellow-400">
-                                           Graph
+                                           3D
                                         </p>
                                     </div>
                                     <div
@@ -65,7 +65,7 @@ const handleImageClick = (action) => {
                                             className="object-cover w-full h-32"
                                         />
                                         <p className="text-center mt-2 text-sm text-white group-hover:text-yellow-400">
-                                           Flow
+                                           Compact
                                         </p>
                                     </div>
                                 </div>

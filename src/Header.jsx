@@ -41,15 +41,15 @@ const Header = () => {
     }
 
     return (
-        <nav className={getStarted ? "bg-black " : "bg-white"}>
+        <nav className={getStarted ? "bg-black " : ""}>
             <div className="max-w-full flex flex-wrap items-center justify-between mx-auto p-4">
-                <a
-                    href="/" passHref
+                <button
+                   onClick={() => { setStarted(!getStarted) }}
                     className="flex items-center space-x-3 rtl:space-x-reverse"
                 >
 
                     <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white md:text-4xl lg:text-4xl "><span className="bg-gradient-to-tl from-slate-700 via-slate-400 to-slate-800 bg-clip-text text-transparent">JSON2GRAPH</span></h1>
-                </a>
+                </button>
 
                 {!getStarted &&
 
@@ -483,11 +483,11 @@ const Header = () => {
                     <a
                             href='https://jsonviewer.tools/editor'
                             target='_blank'
-                            className="text-blue-400 toggle-label block overflow-hidden h-6 rounded-full text-white cursor-pointer"
+                            className="text-blue-600 toggle-label block overflow-hidden h-6 rounded-full text-white cursor-pointer"
                         >
                            
                             
-                            Flow</a>
+                            Compact Design</a>
 
                             <svg width={20} fill="blue" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M23.5 23.5h-15v-15h4.791V6H6v20h20v-7.969h-2.5z"></path><path d="M17.979 6l3.016 3.018-6.829 6.829 1.988 1.987 6.83-6.828L26 14.02V6z"></path></g></svg>
                 </div>}

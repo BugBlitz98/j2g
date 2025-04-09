@@ -41,10 +41,10 @@ const Header = () => {
     }
 
     return (
-        <nav className={getStarted ? "bg-black " : ""}>
+        <nav className={getStarted ? "bg-black " : "bg-gradient-to-b from-slate-900 to-indigo-950"}>
             <div className="max-w-full flex flex-wrap items-center justify-between mx-auto p-4">
                 <button
-                   onClick={() => { setStarted(!getStarted) }}
+                    onClick={() => { setStarted(!getStarted) }}
                     className="flex items-center space-x-3 rtl:space-x-reverse"
                 >
 
@@ -82,17 +82,17 @@ const Header = () => {
                             </svg>
                         </button>
                         <div className={isOpen ? "w-full md:block md:w-auto" : "hidden w-full md:block md:w-auto"} id="navbar-default">
-                            <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
+                            <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
                                 <li>
-                                    <a href="#howitworks" className="block py-2 px-3 text-blue-700  rounded md:bg-transparent md:p-0  " aria-current="page">How it Works</a>
+                                    <a href="#howitworks" className="block py-2 px-3 text-white  rounded md:bg-transparent md:p-0  " aria-current="page">How it Works</a>
                                 </li>
 
                                 <li>
-                                    <a href="#about" className="block py-2 px-3 text-blue-700  rounded md:bg-transparent  md:p-0  " aria-current="page">About</a>
+                                    <a href="#about" className="block py-2 px-3 text-white  rounded md:bg-transparent  md:p-0  " aria-current="page">About</a>
                                 </li>
 
                                 <li>
-                                    <button onClick={() => { setStarted(!getStarted) }} className="block py-2 px-3 text-blue-700  rounded md:bg-transparent  md:p-0  " aria-current="page">Get Started</button>
+                                    <a href='https://jsonviewer.tools?utm_source=json2graph.com' className="block py-2 px-3 text-white  rounded md:bg-transparent  md:p-0  " aria-current="page">Upgrade</a>
                                 </li>
 
                             </ul>
@@ -104,7 +104,7 @@ const Header = () => {
                     <a
                         className="h-8 w-8 rounded-md border border-[#e4e8ee] p-[5px] text-gray-700"
                         type="button"
-                       href='https://ko-fi.com/animeshmanna'
+                        href='https://ko-fi.com/animeshmanna'
                     >
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Environment / Coffee"> <path id="Vector" d="M4 20H10.9433M10.9433 20H11.0567M10.9433 20C10.9622 20.0002 10.9811 20.0002 11 20.0002C11.0189 20.0002 11.0378 20.0002 11.0567 20M10.9433 20C7.1034 19.9695 4 16.8468 4 12.9998V8.92285C4 8.41305 4.41305 8 4.92285 8H17.0767C17.5865 8 18 8.41305 18 8.92285V9M11.0567 20H18M11.0567 20C14.8966 19.9695 18 16.8468 18 12.9998M18 9H19.5C20.8807 9 22 10.1193 22 11.5C22 12.8807 20.8807 14 19.5 14H18V12.9998M18 9V12.9998M15 3L14 5M12 3L11 5M9 3L8 5" stroke="#e4e8ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg>
                     </a>
@@ -485,20 +485,22 @@ const Header = () => {
                         />
 
 
-                       
+
 
                     </div>
-                   
-                    <a
-                            href='https://jsonviewer.tools/editor'
-                            target='_blank'
-                            className="text-blue-600 toggle-label block overflow-hidden h-6 rounded-full text-white cursor-pointer"
-                        >
-                           
-                            
-                            Compact Design</a>
 
-                            <svg width={20} fill="blue" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M23.5 23.5h-15v-15h4.791V6H6v20h20v-7.969h-2.5z"></path><path d="M17.979 6l3.016 3.018-6.829 6.829 1.988 1.987 6.83-6.828L26 14.02V6z"></path></g></svg>
+                    <a 
+    href="https://jsonviewer.tools/editor" 
+    target="_blank" 
+    className="inline-flex items-center justify-center px-4 py-2 text-base font-medium text-white bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition duration-300 ease-in-out hover:from-purple-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 animate-pulse"
+  >
+    <span class="mr-2">Upgrade</span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd" />
+    </svg>
+  </a>
+
+                   
                 </div>}
             </div>
 

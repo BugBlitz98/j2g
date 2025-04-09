@@ -251,9 +251,11 @@ function App() {
         <meta name="twitter:image" content={"https://www.json2graph.com/logo.png"} />
       </Helmet>
       {isLoading ? <Loader /> : <><header> <Header /></header>
-        <main className="mb-4 flex h-[calc(100vh-84px)] w-full flex-row md:flex-row items-center mx-auto ">
+       
 
-         {getStarted && <Allotment
+         {getStarted &&
+          <main className="mb-4 flex h-[calc(100vh-84px)] w-full flex-row md:flex-row items-center mx-auto ">
+          <Allotment
             className="!relative flex h-[calc(100vh-84px)]"
             proportionalLayout={false}
           >
@@ -321,35 +323,69 @@ function App() {
               </div>
 
             </Allotment.Pane>
-          </Allotment>}
+          </Allotment></main>}
 
           {!getStarted && <>
-            <section className="mt-20">
-    <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
-        
-        <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none bg-gradient-to-tl from-slate-800 via-violet-500 to-zinc-400 bg-clip-text text-transparent md:text-5xl lg:text-6xl ">Transform JSON into Interactive Graphs</h1>
-        <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 bg-gradient-to-tl from-slate-700 via-slate-950 to-gray-950 bg-clip-text text-transparent">Quickly turn your JSON data into stunning, interactive 3D graphs. Explore, zoom, and analyze your data with ease—perfect for developers and data enthusiasts looking to visualize information effortlessly</p>
-        <div className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-            
-            <button onClick={()=>{
-              setIsOpen(true)
-              //setStarted(!getStarted)
-              }} className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 ">
-               Get Started
-            </button>  
-        </div>
-
-        {/* <div className="px-4 mx-auto text-center md:max-w-screen-md lg:max-w-screen-lg lg:px-36">
-  <span className="font-bold text-gray-500 uppercase tracking-wider">Powered By</span>
-  <div className="flex flex-wrap justify-center items-center mt-8 text-gray-600">
-    <a href="https://x.com/BlitzBug98" className="flex items-center space-x-3 mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400">
-      <img src="https://www.jsonviewer.tools/logo.png" className="" width={70} alt="jsonviewer.tools logo" />
-      <span className="text-lg font-semibold">jsonviewer.tools</span>
-    </a>
+            <section className="relative overflow-hidden bg-gradient-to-b from-slate-900 to-indigo-950 py-24">
+  {/* Background decoration */}
+  <div className="absolute inset-0 opacity-10">
+    <div className="absolute top-20 left-20 w-64 h-64 rounded-full bg-purple-500 blur-3xl"></div>
+    <div className="absolute bottom-20 right-20 w-80 h-80 rounded-full bg-blue-500 blur-3xl"></div>
   </div>
-</div> */}
-
+  
+  <div className="relative py-12 px-4 mx-auto max-w-screen-xl text-center z-10">
+    {/* Decorative element */}
+    <div className="mb-6 inline-block">
+      <svg className="w-12 h-12 mx-auto text-indigo-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
     </div>
+    
+    <h1 className="mb-6 text-5xl font-extrabold tracking-tight leading-none md:text-6xl lg:text-7xl">
+      <span className="bg-gradient-to-r from-blue-300 via-purple-400 to-pink-300 bg-clip-text text-transparent">
+        Transform JSON into Interactive Graphs
+      </span>
+    </h1>
+    
+    <p className="mb-10 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48 max-w-3xl mx-auto">
+      Quickly turn your JSON data into stunning, interactive 3D graphs. Explore, zoom, and analyze your data with ease—perfect for developers and data enthusiasts looking to visualize information effortlessly.
+    </p>
+    
+    <div className="flex flex-col mb-8 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-6">
+      <button 
+        onClick={() => {
+          setStarted(true)
+                                            setIsOpen(false)
+        }} 
+        className="inline-flex justify-center items-center py-4 px-8 text-base font-medium text-center text-white bg-gradient-to-r from-purple-500 to-indigo-600 rounded-xl hover:from-purple-600 hover:to-indigo-700 focus:ring-4 focus:ring-indigo-300 focus:ring-offset-2 focus:outline-none transition-all duration-300 shadow-lg shadow-indigo-500/30"
+      >
+        Editor
+        <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+        </svg>
+      </button>
+      
+      <a href='https://jsonviewer.tools?utm_source=json2graph.com'
+        className="inline-flex justify-center items-center py-4 px-8 text-base font-medium text-center text-indigo-100 rounded-xl border border-indigo-400/30 hover:bg-indigo-800/20 focus:ring-4 focus:ring-indigo-300/20 transition-all duration-300 backdrop-blur-sm"
+      >
+        Upgrade
+        <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+      </a>
+    </div>
+    
+    {/* Feature pills */}
+    <div className="flex flex-wrap justify-center gap-3 mt-10">
+      <span className="px-4 py-2 rounded-full bg-indigo-900/50 text-indigo-200 text-sm font-medium backdrop-blur-sm border border-indigo-700/30">Real-time Updates</span>
+      <span className="px-4 py-2 rounded-full bg-indigo-900/50 text-indigo-200 text-sm font-medium backdrop-blur-sm border border-indigo-700/30">Customizable Views</span>
+      <span className="px-4 py-2 rounded-full bg-indigo-900/50 text-indigo-200 text-sm font-medium backdrop-blur-sm border border-indigo-700/30">3D Visualization</span>
+      <span className="px-4 py-2 rounded-full bg-indigo-900/50 text-indigo-200 text-sm font-medium backdrop-blur-sm border border-indigo-700/30">Export Options</span>
+    </div>
+  </div>
 </section>
           </>
 }
@@ -358,7 +394,7 @@ function App() {
 
 
 
-        </main>
+       
         <Step />
         <About />
         <footer> <Footer /></footer>

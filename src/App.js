@@ -457,7 +457,7 @@ function App() {
                   {/* Modal Description */}
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      Visualization of JSON Data with jsonviewer.tools. Explore advanced features like real-time updates, customizable views, and 3D visualization. Upgrade now for enhanced functionality and export options.
+                      Visualization of JSON Data with jsonviewer.tools. Explore advanced features like real-time updates, customizable views, and ai features. Upgrade now for enhanced functionality and export options.
                     </p>
                   </div>
 

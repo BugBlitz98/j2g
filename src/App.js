@@ -13,6 +13,8 @@ import "allotment/dist/style.css";
 import Loader from './Loader';
 import { Helmet } from 'react-helmet';
 import InfoModal from './components/InfoModal';
+import { Dialog, Transition } from '@headlessui/react';
+import { Fragment } from 'react';
 function App() {
 
   const animation = useStored((state) => state.animation);
@@ -78,6 +80,24 @@ function App() {
 
     return { nodes, edges };
   };
+
+
+  const [isOpenM, setIsOpenM] = useState(false);
+
+  // Open modal after 10 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsOpenM(true);
+    }, 10000); // 10 seconds
+
+    // Cleanup timer on component unmount
+    return () => clearTimeout(timer);
+  }, []);
+
+  const closeModal = () => {
+    setIsOpenM(false);
+  };
+
   const json = {
     "family": {
       "father": {
@@ -254,9 +274,9 @@ function App() {
        
 
          {getStarted &&
-          <main className="mb-4 flex h-[calc(100vh-84px)] w-full flex-row md:flex-row items-center mx-auto ">
+          <main className="mb-4 flex h-[calc(100vh-73px)] w-full flex-row md:flex-row items-center mx-auto ">
           <Allotment
-            className="!relative flex h-[calc(100vh-84px)]"
+            className="!relative flex h-[calc(100vh-73px)]"
             proportionalLayout={false}
           >
             {!fullScreen && <Allotment.Pane
@@ -389,6 +409,84 @@ function App() {
 </section>
           </>
 }
+
+
+<Transition appear show={isOpenM} as={Fragment}>
+        <Dialog as="div" className="relative z-10" onClose={closeModal}>
+          {/* Overlay */}
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-black bg-opacity-50" />
+          </Transition.Child>
+
+          {/* Modal Content */}
+          <div className="fixed inset-0 overflow-y-auto">
+            <div className="flex min-h-full items-center justify-center p-4">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                  {/* Modal Image */}
+                  <img
+                    src="https://ik.imagekit.io/qsj9rwkvv/Screenshot%202025-04-18%20at%204.57.32%E2%80%AFPM.png?updatedAt=1745685453045"
+                    alt="Advanced Features"
+                    className="w-full h-68 object-cover rounded-md mb-4"
+                  />
+
+                  {/* Modal Title */}
+                  <Dialog.Title
+                    as="h3"
+                    className="text-lg font-medium leading-6 text-gray-900"
+                  >
+                    Try Advanced Features
+                  </Dialog.Title>
+
+                  {/* Modal Description */}
+                  <div className="mt-2">
+                    <p className="text-sm text-gray-500">
+                      Visualization of JSON Data with jsonviewer.tools. Explore advanced features like real-time updates, customizable views, and 3D visualization. Upgrade now for enhanced functionality and export options.
+                    </p>
+                  </div>
+
+                  {/* Close Button */}
+                  <div className="flex mt-4 gap-2">
+                    <button
+                      type="button"
+                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none"
+                      onClick={()=>{
+                        window.open('https://jsonviewer.tools?utm_source=json2graph.com', '_blank');
+                        setIsOpenM(false);
+                      }}
+                    >
+                      Try Now
+                    </button>
+                    <button
+                      type="button"
+                      className="inline-flex justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 focus:outline-none"
+                      onClick={closeModal}
+                    >
+                      Close
+                    </button>
+                  </div>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition>
 
 <InfoModal setIsOpen={setIsOpen} isOpen={isOpen} setStarted={setStarted}/>
 

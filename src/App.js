@@ -163,8 +163,10 @@ function App() {
 
   function handleEditorChange(value, event) {
     let jsonSizeInBytes = new Blob([value]).size;
-    if (jsonSizeInBytes > 200000) {
-      alert('Your JSON data exceeds the limit, maximum 200KB');
+    if (jsonSizeInBytes > 20000) {
+      setIsOpenM(true);
+      // Optionally, you can store a message to show in the modal if you want to customize it
+      // setModalMessage('Your JSON data exceeds the limit, maximum 20KB. Upgrade for more.');
       return false;
     }
     const { nodes, edges } = value ? transformToReaflowFormat(JSON.parse(value)) : { nodes: [], edges: [] };
@@ -191,7 +193,7 @@ function App() {
 
   const lightTheme = {
     canvas: {
-      background: darkMode?'#000':'#fff',
+      background: darkMode ? '#000' : '#fff',
       fog: '#fff'
     },
     node: {
@@ -201,7 +203,7 @@ function App() {
       selectedOpacity: 1,
       inactiveOpacity: 0.2,
       label: {
-        color:  darkMode?'#fff':'#000',
+        color: darkMode ? '#fff' : '#000',
         activeColor: '#1DE9AC'
       },
       subLabel: {
@@ -219,7 +221,7 @@ function App() {
       activeFill: '#1DE9AC'
     },
     edge: {
-      fill:  darkMode?'#fff':'#000',
+      fill: darkMode ? '#fff' : '#000',
       activeFill: '#1DE9AC',
       opacity: 1,
       selectedOpacity: 1,
@@ -231,8 +233,8 @@ function App() {
       }
     },
     arrow: {
-      fill:  darkMode?'#fff':'#000',
-      activeFill:  darkMode?'#fff':'#000'
+      fill: darkMode ? '#fff' : '#000',
+      activeFill: darkMode ? '#fff' : '#000'
     },
     cluster: {
       stroke: '#D8E6EA',
@@ -247,9 +249,9 @@ function App() {
   };
 
   useEffect(() => {
-    
+
     setKok(prevKey => prevKey + 1)
-  },[darkMode]);
+  }, [darkMode]);
   return (
     <>
       <Helmet>
@@ -271,235 +273,235 @@ function App() {
         <meta name="twitter:image" content={"https://www.json2graph.com/logo.png"} />
       </Helmet>
       {isLoading ? <Loader /> : <><header> <Header /></header>
-       
 
-         {getStarted &&
+
+        {getStarted &&
           <main className="mb-4 flex h-[calc(100vh-73px)] w-full flex-row md:flex-row items-center mx-auto ">
-          <Allotment
-            className="!relative flex h-[calc(100vh-73px)]"
-            proportionalLayout={false}
-          >
-            {!fullScreen && <Allotment.Pane
-              className="h-full bg-white dark:bg-vsdark-500 dark:text-white"
-              preferredSize={450}
-              minSize={100}
-              maxSize={800}
-              visible={true}
+            <Allotment
+              className="!relative flex h-[calc(100vh-73px)]"
+              proportionalLayout={false}
             >
-              <div
-                className={darkMode?"order-1 lg:order-2 from-white  relative bg-black to-white":"order-1 lg:order-2 from-white bg-white  relative to-white"}>
-                <div className="flex flex-row">
-                  <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div>
-                  <div className="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>
-                </div>
-                <div className="px-4 lg:px-8 py-3">
-                  <div className="flex flex-row space-x-2">
-                    <div className="h-3 w-3 rounded-full bg-red-600"></div>
-                    <div className="h-3 w-3 rounded-full bg-orange-500"></div>
-                    <div className="h-3 w-3 rounded-full bg-green-400"></div>
-                  </div>
-                </div>
-                <div className="overflow-hidden">
-                  <Editor
-                    className="h-screen md:h-full"
-                    language="json"
-                    theme={darkMode?"hc-black":"white"}
-                    height="90vh"
-                    // defaultValue={data}
-                    value={JSON.stringify(json, null, 2)}
-                    // onMount={handleEditorDidMount}
-                    onChange={handleEditorChange}
-                  />
-                </div>
-              </div>
-            </Allotment.Pane>}
-            <Allotment.Pane
-              className="h-full bg-white dark:bg-vsdark-500 dark:text-white"
-
-              visible={true}
-            >
-              <div style={{
-                position: 'absolute',
-                top: 0,
-                bottom: 0,
-                left: 0,
-                right: 0
-              }}>
-
-                {Array.isArray(nodes) && nodes.length > 0 && <GraphCanvas
-                  ref={ref}
-                  key={kok}
-                  nodes={nodes}
-                  edges={edges}
-                  theme={lightTheme}
-                  cameraMode={animation}
-                  layoutType={direction}
-                  sizingType="centrality"
-
-                //draggable 
-                >
-                  <directionalLight position={[0, 5, -4]} intensity={3} />
-                </GraphCanvas>}
-              </div>
-
-            </Allotment.Pane>
-          </Allotment></main>}
-
-          {!getStarted && <>
-            <section className="relative overflow-hidden bg-gradient-to-b from-slate-900 to-indigo-950 py-24">
-  {/* Background decoration */}
-  <div className="absolute inset-0 opacity-10">
-    <div className="absolute top-20 left-20 w-64 h-64 rounded-full bg-purple-500 blur-3xl"></div>
-    <div className="absolute bottom-20 right-20 w-80 h-80 rounded-full bg-blue-500 blur-3xl"></div>
-  </div>
-  
-  <div className="relative py-12 px-4 mx-auto max-w-screen-xl text-center z-10">
-    {/* Decorative element */}
-    <div className="mb-6 inline-block">
-      <svg className="w-12 h-12 mx-auto text-indigo-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    </div>
-    
-    <h1 className="mb-6 text-5xl font-extrabold tracking-tight leading-none md:text-6xl lg:text-7xl">
-      <span className="bg-gradient-to-r from-blue-300 via-purple-400 to-pink-300 bg-clip-text text-transparent">
-        Transform JSON into Interactive Graphs
-      </span>
-    </h1>
-    
-    <p className="mb-10 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48 max-w-3xl mx-auto">
-      Quickly turn your JSON data into stunning, interactive 3D graphs. Explore, zoom, and analyze your data with ease—perfect for developers and data enthusiasts looking to visualize information effortlessly.
-    </p>
-    
-    <div className="flex flex-col mb-8 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-6">
-      <button 
-        onClick={() => {
-          setStarted(true)
-                                            setIsOpen(false)
-        }} 
-        className="inline-flex justify-center items-center py-4 px-8 text-base font-medium text-center text-white bg-gradient-to-r from-purple-500 to-indigo-600 rounded-xl hover:from-purple-600 hover:to-indigo-700 focus:ring-4 focus:ring-indigo-300 focus:ring-offset-2 focus:outline-none transition-all duration-300 shadow-lg shadow-indigo-500/30"
-      >
-        Editor
-        <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-        </svg>
-      </button>
-      
-      <a href='https://jsonviewer.tools?utm_source=json2graph.com'
-        className="inline-flex justify-center items-center py-4 px-8 text-base font-medium text-center text-indigo-100 rounded-xl border border-indigo-400/30 hover:bg-indigo-800/20 focus:ring-4 focus:ring-indigo-300/20 transition-all duration-300 backdrop-blur-sm"
-      >
-        Upgrade
-        <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-        </svg>
-      </a>
-    </div>
-    
-    {/* Feature pills */}
-    <div className="flex flex-wrap justify-center gap-3 mt-10">
-      <span className="px-4 py-2 rounded-full bg-indigo-900/50 text-indigo-200 text-sm font-medium backdrop-blur-sm border border-indigo-700/30">Real-time Updates</span>
-      <span className="px-4 py-2 rounded-full bg-indigo-900/50 text-indigo-200 text-sm font-medium backdrop-blur-sm border border-indigo-700/30">Customizable Views</span>
-      <span className="px-4 py-2 rounded-full bg-indigo-900/50 text-indigo-200 text-sm font-medium backdrop-blur-sm border border-indigo-700/30">3D Visualization</span>
-      <span className="px-4 py-2 rounded-full bg-indigo-900/50 text-indigo-200 text-sm font-medium backdrop-blur-sm border border-indigo-700/30">Export Options</span>
-    </div>
-  </div>
-</section>
-          </>
-}
-
-
-<Transition appear show={isOpenM} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={closeModal}>
-          {/* Overlay */}
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div className="fixed inset-0 bg-black bg-opacity-50" />
-          </Transition.Child>
-
-          {/* Modal Content */}
-          <div className="fixed inset-0 overflow-y-auto">
-            <div className="flex min-h-full items-center justify-center p-4">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
+              {!fullScreen && <Allotment.Pane
+                className="h-full bg-white dark:bg-vsdark-500 dark:text-white"
+                preferredSize={450}
+                minSize={100}
+                maxSize={800}
+                visible={true}
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                  {/* Modal Image */}
-                  <img
-                    src="https://ik.imagekit.io/qsj9rwkvv/Screenshot%202025-04-18%20at%204.57.32%E2%80%AFPM.png?updatedAt=1745685453045"
-                    alt="Advanced Features"
-                    className="w-full h-68 object-cover rounded-md mb-4"
-                  />
+                <div
+                  className={darkMode ? "order-1 lg:order-2 from-white  relative bg-black to-white" : "order-1 lg:order-2 from-white bg-white  relative to-white"}>
+                  <div className="flex flex-row">
+                    <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div>
+                    <div className="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>
+                  </div>
+                  <div className="px-4 lg:px-8 py-3">
+                    <div className="flex flex-row space-x-2">
+                      <div className="h-3 w-3 rounded-full bg-red-600"></div>
+                      <div className="h-3 w-3 rounded-full bg-orange-500"></div>
+                      <div className="h-3 w-3 rounded-full bg-green-400"></div>
+                    </div>
+                  </div>
+                  <div className="overflow-hidden">
+                    <Editor
+                      className="h-screen md:h-full"
+                      language="json"
+                      theme={darkMode ? "hc-black" : "white"}
+                      height="90vh"
+                      // defaultValue={data}
+                      value={JSON.stringify(json, null, 2)}
+                      // onMount={handleEditorDidMount}
+                      onChange={handleEditorChange}
+                    />
+                  </div>
+                </div>
+              </Allotment.Pane>}
+              <Allotment.Pane
+                className="h-full bg-white dark:bg-vsdark-500 dark:text-white"
 
-                  {/* Modal Title */}
-                  <Dialog.Title
-                    as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
+                visible={true}
+              >
+                <div style={{
+                  position: 'absolute',
+                  top: 0,
+                  bottom: 0,
+                  left: 0,
+                  right: 0
+                }}>
+
+                  {Array.isArray(nodes) && nodes.length > 0 && <GraphCanvas
+                    ref={ref}
+                    key={kok}
+                    nodes={nodes}
+                    edges={edges}
+                    theme={lightTheme}
+                    cameraMode={animation}
+                    layoutType={direction}
+                    sizingType="centrality"
+
+                  //draggable 
                   >
-                    Try Advanced Features
-                  </Dialog.Title>
+                    <directionalLight position={[0, 5, -4]} intensity={3} />
+                  </GraphCanvas>}
+                </div>
 
-                  {/* Modal Description */}
-                  <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                      Visualization of JSON Data with jsonviewer.tools. Explore advanced features like real-time updates, customizable views, and ai features. Upgrade now for enhanced functionality and export options.
-                    </p>
-                  </div>
+              </Allotment.Pane>
+            </Allotment></main>}
 
-                  {/* Close Button */}
-                  <div className="flex mt-4 gap-2">
-                    <button
-                      type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none"
-                      onClick={()=>{
-                        window.open('https://jsonviewer.tools?utm_source=json2graph.com', '_blank');
-                        setIsOpenM(false);
-                      }}
-                    >
-                      Try Now
-                    </button>
-                    <button
-                      type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 focus:outline-none"
-                      onClick={closeModal}
-                    >
-                      Close
-                    </button>
-                  </div>
-                </Dialog.Panel>
-              </Transition.Child>
+        {!getStarted && <>
+          <section className="relative overflow-hidden bg-gradient-to-b from-slate-900 to-indigo-950 py-24">
+            {/* Background decoration */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-20 left-20 w-64 h-64 rounded-full bg-purple-500 blur-3xl"></div>
+              <div className="absolute bottom-20 right-20 w-80 h-80 rounded-full bg-blue-500 blur-3xl"></div>
             </div>
-          </div>
-        </Dialog>
-      </Transition>
 
-<InfoModal setIsOpen={setIsOpen} isOpen={isOpen} setStarted={setStarted}/>
+            <div className="relative py-12 px-4 mx-auto max-w-screen-xl text-center z-10">
+              {/* Decorative element */}
+              <div className="mb-6 inline-block">
+                <svg className="w-12 h-12 mx-auto text-indigo-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+
+              <h1 className="mb-6 text-5xl font-extrabold tracking-tight leading-none md:text-6xl lg:text-7xl">
+                <span className="bg-gradient-to-r from-blue-300 via-purple-400 to-pink-300 bg-clip-text text-transparent">
+                  Transform JSON into Interactive Graphs
+                </span>
+              </h1>
+
+              <p className="mb-10 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48 max-w-3xl mx-auto">
+                Quickly turn your JSON data into stunning, interactive 3D graphs. Explore, zoom, and analyze your data with ease—perfect for developers and data enthusiasts looking to visualize information effortlessly.
+              </p>
+
+              <div className="flex flex-col mb-8 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-6">
+                <button
+                  onClick={() => {
+                    setStarted(true)
+                    setIsOpen(false)
+                  }}
+                  className="inline-flex justify-center items-center py-4 px-8 text-base font-medium text-center text-white bg-gradient-to-r from-purple-500 to-indigo-600 rounded-xl hover:from-purple-600 hover:to-indigo-700 focus:ring-4 focus:ring-indigo-300 focus:ring-offset-2 focus:outline-none transition-all duration-300 shadow-lg shadow-indigo-500/30"
+                >
+                  Editor
+                  <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                  </svg>
+                </button>
+
+                <a href='https://jsonviewer.tools?utm_source=json2graph.com'
+                  className="inline-flex justify-center items-center py-4 px-8 text-base font-medium text-center text-indigo-100 rounded-xl border border-indigo-400/30 hover:bg-indigo-800/20 focus:ring-4 focus:ring-indigo-300/20 transition-all duration-300 backdrop-blur-sm"
+                >
+                  Upgrade
+                  <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </a>
+              </div>
+
+              {/* Feature pills */}
+              <div className="flex flex-wrap justify-center gap-3 mt-10">
+                <span className="px-4 py-2 rounded-full bg-indigo-900/50 text-indigo-200 text-sm font-medium backdrop-blur-sm border border-indigo-700/30">Real-time Updates</span>
+                <span className="px-4 py-2 rounded-full bg-indigo-900/50 text-indigo-200 text-sm font-medium backdrop-blur-sm border border-indigo-700/30">Customizable Views</span>
+                <span className="px-4 py-2 rounded-full bg-indigo-900/50 text-indigo-200 text-sm font-medium backdrop-blur-sm border border-indigo-700/30">3D Visualization</span>
+                <span className="px-4 py-2 rounded-full bg-indigo-900/50 text-indigo-200 text-sm font-medium backdrop-blur-sm border border-indigo-700/30">Export Options</span>
+              </div>
+            </div>
+          </section>
+        </>
+        }
+
+
+        <Transition appear show={isOpenM} as={Fragment}>
+          <Dialog as="div" className="relative z-10" onClose={closeModal}>
+            {/* Overlay */}
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <div className="fixed inset-0 bg-black bg-opacity-50" />
+            </Transition.Child>
+
+            {/* Modal Content */}
+            <div className="fixed inset-0 overflow-y-auto">
+              <div className="flex min-h-full items-center justify-center p-4">
+                <Transition.Child
+                  as={Fragment}
+                  enter="ease-out duration-300"
+                  enterFrom="opacity-0 scale-95"
+                  enterTo="opacity-100 scale-100"
+                  leave="ease-in duration-200"
+                  leaveFrom="opacity-100 scale-100"
+                  leaveTo="opacity-0 scale-95"
+                >
+                  <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                    {/* Modal Image */}
+                    <img
+                      src="https://ik.imagekit.io/qsj9rwkvv/Screenshot%202025-04-18%20at%204.57.32%E2%80%AFPM.png?updatedAt=1745685453045"
+                      alt="Advanced Features"
+                      className="w-full h-68 object-cover rounded-md mb-4"
+                    />
+
+                    {/* Modal Title */}
+                    <Dialog.Title
+                      as="h3"
+                      className="text-lg font-medium leading-6 text-gray-900"
+                    >
+                      Try Advanced Features
+                    </Dialog.Title>
+
+                    {/* Modal Description */}
+                    <div className="mt-2">
+                      <p className="text-sm text-gray-500">
+                        Visualization of JSON Data with jsonviewer.tools. Explore advanced features like real-time updates, customizable views,more advance 3d visualization and ai features. Upgrade now for enhanced functionality and export options.
+                      </p>
+                    </div>
+
+                    {/* Close Button */}
+                    <div className="flex mt-4 gap-2">
+                      <button
+                        type="button"
+                        className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none"
+                        onClick={() => {
+                          window.open('https://jsonviewer.tools?utm_source=json2graph.com', '_blank');
+                          setIsOpenM(false);
+                        }}
+                      >
+                        Upgrade
+                      </button>
+                      <button
+                        type="button"
+                        className="inline-flex justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 focus:outline-none"
+                        onClick={closeModal}
+                      >
+                        Not Now
+                      </button>
+                    </div>
+                  </Dialog.Panel>
+                </Transition.Child>
+              </div>
+            </div>
+          </Dialog>
+        </Transition>
+
+        <InfoModal setIsOpen={setIsOpen} isOpen={isOpen} setStarted={setStarted} />
 
 
 
-       
+
         <Step />
         <About />
         <footer> <Footer /></footer>
-       
-        </>
-        
-        }</>
+
+      </>
+
+      }</>
   );
 }
 

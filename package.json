@@ -11,9 +11,15 @@
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-scripts": "5.0.1",
-    "reagraph": "^4.19.2",
+    "react-three": "^0.9.7",
+    "reagraph": "^4.24.1",
     "web-vitals": "^3.0.4",
     "zustand": "^4.5.4"
+  },
+  "resolutions": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-reconciler": "^0.29.0"
   },
   "scripts": {
     "start": "react-scripts start",

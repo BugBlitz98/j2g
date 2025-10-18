@@ -66,7 +66,7 @@ const Footer = () => {
                   className="transition-transform hover:scale-105"
                 />
               </a>
-              <a href="https://startupfa.me/s/json2graph.com?utm_source=www.json2graph.com" target="_blank"><img src="https://startupfa.me/badges/featured/dark.webp" alt="json2graph.com - Featured on Startup Fame" width="171" height="54" /></a>
+              {/* <a href="https://startupfa.me/s/json2graph.com?utm_source=www.json2graph.com" target="_blank"><img src="https://startupfa.me/badges/featured/dark.webp" alt="json2graph.com - Featured on Startup Fame" width="171" height="54" /></a> */}
             </div>
 
             

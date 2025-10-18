@@ -3,25 +3,18 @@ import React from 'react'
 const Footer = () => {
   return (
     <footer className="relative">
-     
-      
       {/* Footer content */}
       <div className="bg-gradient-to-b from-indigo-900 to-slate-900 pt-6 pb-8 relative">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute bottom-20 left-40 w-72 h-72 rounded-full bg-purple-500 blur-3xl"></div>
           <div className="absolute top-10 right-40 w-64 h-64 rounded-full bg-blue-500 blur-3xl"></div>
         </div>
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-3 gap-12 mb-12">
             {/* Logo and branding */}
             <div className="space-y-6">
               <div className="flex items-center space-x-3">
-                {/* <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center shadow-lg">
-                  <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 4L3 11L10 14M20 4L13 21L10 14M20 4L10 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div> */}
                 <h2 className="text-3xl font-extrabold">
                   <span className="bg-gradient-to-r from-blue-300 via-purple-400 to-pink-300 bg-clip-text text-transparent">
                     JSON2GRAPH
@@ -31,7 +24,7 @@ const Footer = () => {
               <p className="text-gray-400">
                 Transform your JSON data into beautiful interactive visualizations with our easy-to-use tool.
               </p>
-              
+
               <div className="flex space-x-4">
                 <a href="https://github.com/BugBlitz98" className="text-gray-400 hover:text-purple-400 transition-colors">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -61,24 +54,21 @@ const Footer = () => {
                 <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Documentation</a>
               </nav>
             </div>
-            
-            {/* Newsletter */}
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-6">Stay Updated</h3>
-              <p className="text-gray-400 mb-4">Subscribe to our newsletter for the latest updates and features.</p>
-              <div className="flex">
-                <input 
-                  type="email" 
-                  placeholder="Your email" 
-                  className="px-4 py-2 rounded-l-lg bg-slate-800 border border-indigo-900/50 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 flex-grow"
+
+            {/* Twelve Tools Badge */}
+            <div className="flex items-center justify-center">
+              <a href="https://twelve.tools" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="https://twelve.tools/badge0-dark.svg"
+                  alt="Featured on Twelve Tools"
+                  width="200"
+                  height="54"
+                  className="transition-transform hover:scale-105"
                 />
-                <button className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white px-4 py-2 rounded-r-lg hover:from-purple-600 hover:to-indigo-700 transition-all duration-300">
-                  Subscribe
-                </button>
-              </div>
+              </a>
             </div>
           </div>
-          
+
           <div className="pt-8 border-t border-indigo-900/30">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <p className="text-sm text-gray-400 mb-4 md:mb-0">

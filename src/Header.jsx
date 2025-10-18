@@ -1,4 +1,4 @@
-"use client"
+
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment, useState } from "react";
 import { useStored } from './store/useStore';

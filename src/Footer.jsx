@@ -56,7 +56,7 @@ const Footer = () => {
             </div>
 
             {/* Twelve Tools Badge */}
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center gap-2">
               <a href="https://twelve.tools" target="_blank" rel="noopener noreferrer">
                 <img
                   src="https://twelve.tools/badge0-dark.svg"
@@ -66,7 +66,10 @@ const Footer = () => {
                   className="transition-transform hover:scale-105"
                 />
               </a>
+              <a href="https://startupfa.me/s/json2graph.com?utm_source=www.json2graph.com" target="_blank"><img src="https://startupfa.me/badges/featured/dark.webp" alt="json2graph.com - Featured on Startup Fame" width="171" height="54" /></a>
             </div>
+
+            
           </div>
 
           <div className="pt-8 border-t border-indigo-900/30">

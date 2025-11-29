@@ -1,31 +1,43 @@
-# Create React App
+# JSON2Graph — 3D JSON Visualization & Interactive Explorer
 
-This directory is a brief example of a [Create React App](https://github.com/facebook/create-react-app) site that can be deployed to Vercel with zero configuration.
+Transform complex JSON data into beautiful 3D graphs & interactive visual networks.  
+Instead of scrolling through raw structured text, visually explore relationships and nested levels in real time.
 
-## Deploy Your Own
+### 🌐 Live Demo  
+https://json2graph.com
 
-Deploy your own Create React App project with Vercel.
+### 🏷 GitHub Repository  
+[https://github.com/BugBlitz98/j2g](https://github.com/BugBlitz98/j2g)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/vercel/tree/main/examples/create-react-app&template=create-react-app)
+---
 
-_Live Example: https://create-react-template.vercel.app/_
+## 📸 Screenshots & Preview
 
-## Available Scripts
+### 🔥 3D JSON Graph Rendering  
+![Graph View](https://ik.imagekit.io/qsj9rwkvv/Screenshot%202024-12-17%20at%2010.24.50%E2%80%AFPM.png?updatedAt=1734454555080)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## ✨ Features
 
-Runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 🧠 JSON → Graph visualizer
+- 🎮 Drag, zoom, rotate — full 3D control
+- 🔍 Node details on click + relationships view
+- 🌈 Beautiful themes (dark/light)
+- 📂 Import JSON from file / clipboard
+- 📤 Export visualization as PNG/SVG
+- 🔬 Focus on specific keys or nested paths
+- 📊 Different layout engines (force / radial / hierarchical)
+- 🌍 WebGL powered 3D visualization
 
-The page will reload when you make changes. You may also see any lint errors in the console.
+---
 
-### `npm test`
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-%F0%9F%8D%BA-yellow.svg)](https://buymeacoffee.com/animeshmanna)
 
-Launches the test runner in the interactive watch mode. See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🔧 Installation
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.
-
-It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include the hashes.
+```bash
+git clone https://github.com/your-username/json2graph.git
+cd json2graph
+npm install
+npm run dev

@@ -15,6 +15,7 @@ import { Helmet } from 'react-helmet';
 import InfoModal from './components/InfoModal';
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
+import { Analytics } from "@vercel/analytics/react"
 function App() {
 
   const animation = useStored((state) => state.animation);
@@ -498,7 +499,7 @@ function App() {
         <Step />
         <About />
         <footer> <Footer /></footer>
-
+        <Analytics/>
       </>
 
       }</>

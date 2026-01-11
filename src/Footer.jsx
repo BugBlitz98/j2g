@@ -57,15 +57,9 @@ const Footer = () => {
 
             {/* Twelve Tools Badge */}
             <div className="flex items-center justify-center gap-2">
-              <a href="https://twelve.tools" target="_blank" rel="noopener noreferrer">
-                <img
-                  src="https://twelve.tools/badge0-dark.svg"
-                  alt="Featured on Twelve Tools"
-                  width="200"
-                  height="54"
-                  className="transition-transform hover:scale-105"
-                />
-              </a>
+            <a href="https://turbo0.com/item/json2graph" target="_blank" rel="noopener noreferrer">
+  <img src="https://img.turbo0.com/badge-listed-light.svg" alt="Listed on Turbo0" style={{height: '54px', width: 'auto'}} />
+</a>
               {/* <a href="https://startupfa.me/s/json2graph.com?utm_source=www.json2graph.com" target="_blank"><img src="https://startupfa.me/badges/featured/dark.webp" alt="json2graph.com - Featured on Startup Fame" width="171" height="54" /></a> */}
             </div>
 

@@ -58,7 +58,7 @@ const Footer = () => {
             {/* Turbo0 Badge */}
             <div className="flex items-center justify-center gap-2">
               <a 
-                href="https://turbo0.com/item/json2graph.com" 
+                href="https://turbo0.com/item/json2graph" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="View json2graph on Turbo0"

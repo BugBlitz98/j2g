@@ -256,22 +256,29 @@ function App() {
   return (
     <>
       <Helmet>
-        <title>Online JSON to Graph Visualization</title>
-      </Helmet>
-      <Helmet>"
-        <meta name="description" content="Free online transfrom json to stunning 2d and 3d graph visualization with our json2graph tools.easily understand and download the graph.try it now" />
-      </Helmet>
-      <Helmet>
-        <meta property="og:title" content="JSON to Graph Visualization" />
-        <meta property="og:description" content="convert json to stunning 2d and 3d graph visualization with our json2graph tools" />
-        <meta property="og:image" content={"https://www.json2graph.com/logo.png"} />
-        <meta property="og:url" content={"https://www.json2graph.com"} />
+        <title>JSON to Graph Visualization | Transform JSON into Interactive 3D Graphs</title>
+        <meta name="description" content="Free online tool to transform JSON data into stunning 2D and 3D graph visualizations. Easily understand complex data structures and download interactive graphs. Try it now!" />
+        <meta name="keywords" content="json to graph, json visualizer, json 3d graph, json viewer, json graph visualization, json network graph, json data visualization, interactive json graph" />
+        <meta name="author" content="JSON2Graph" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://www.json2graph.com/" />
+        
+        {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-      </Helmet>
-      <Helmet>
-        <meta name="twitter:title" content={"JSON to Graph Visualization"} />
-        <meta name="twitter:description" content={"convert json to stunning 2d and 3d graph visualization with our json2graph tools"} />
-        <meta name="twitter:image" content={"https://www.json2graph.com/logo.png"} />
+        <meta property="og:url" content="https://www.json2graph.com/" />
+        <meta property="og:title" content="JSON to Graph Visualization | Transform JSON into Interactive 3D Graphs" />
+        <meta property="og:description" content="Free online tool to transform JSON data into stunning 2D and 3D graph visualizations. Easily understand complex data structures and download interactive graphs." />
+        <meta property="og:image" content="https://www.json2graph.com/preview.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:site_name" content="JSON2Graph" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://www.json2graph.com/" />
+        <meta name="twitter:title" content="JSON to Graph Visualization | Transform JSON into Interactive 3D Graphs" />
+        <meta name="twitter:description" content="Free online tool to transform JSON data into stunning 2D and 3D graph visualizations. Easily understand complex data structures and download interactive graphs." />
+        <meta name="twitter:image" content="https://www.json2graph.com/preview.png" />
       </Helmet>
       {isLoading ? <Loader /> : <><header> <Header /></header>
 
@@ -349,67 +356,104 @@ function App() {
             </Allotment></main>}
 
         {!getStarted && <>
-          <section className="relative overflow-hidden bg-gradient-to-b from-slate-900 to-indigo-950 py-24">
-            {/* Background decoration */}
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-20 left-20 w-64 h-64 rounded-full bg-purple-500 blur-3xl"></div>
-              <div className="absolute bottom-20 right-20 w-80 h-80 rounded-full bg-blue-500 blur-3xl"></div>
+          <main>
+          <section className="relative overflow-hidden bg-gradient-to-b from-slate-900 via-indigo-950 to-slate-900 py-20 md:py-32">
+            {/* Animated background decoration */}
+            <div className="absolute inset-0">
+              <div className="absolute top-20 left-20 w-64 h-64 rounded-full bg-purple-500 blur-3xl opacity-20 animate-pulse"></div>
+              <div className="absolute bottom-20 right-20 w-80 h-80 rounded-full bg-blue-500 blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '1s' }}></div>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-indigo-500 blur-3xl opacity-10"></div>
+              {/* Animated grid pattern */}
+              <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f12_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f12_1px,transparent_1px)] bg-[size:24px_24px]"></div>
             </div>
 
-            <div className="relative py-12 px-4 mx-auto max-w-screen-xl text-center z-10">
-              {/* Decorative element */}
-              <div className="mb-6 inline-block">
-                <svg className="w-12 h-12 mx-auto text-indigo-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+            <div className="relative py-12 px-4 mx-auto max-w-7xl text-center z-10">
+              {/* Decorative element with animation */}
+              <div className="mb-8 inline-block animate-bounce" style={{ animationDuration: '3s' }}>
+                <div className="relative">
+                  <svg className="w-16 h-16 mx-auto text-indigo-400 drop-shadow-lg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <div className="absolute inset-0 bg-indigo-400/20 blur-xl rounded-full"></div>
+                </div>
               </div>
 
-              <h1 className="mb-6 text-5xl font-extrabold tracking-tight leading-none md:text-6xl lg:text-7xl">
-                <span className="bg-gradient-to-r from-blue-300 via-purple-400 to-pink-300 bg-clip-text text-transparent">
-                  Transform JSON into Interactive Graphs
+              <h1 className="mb-6 text-4xl font-extrabold tracking-tight leading-tight md:text-5xl lg:text-7xl">
+                <span className="block bg-gradient-to-r from-blue-300 via-purple-400 to-pink-300 bg-clip-text text-transparent animate-gradient">
+                  Transform JSON into
+                </span>
+                <span className="block mt-2 bg-gradient-to-r from-pink-300 via-purple-400 to-blue-300 bg-clip-text text-transparent animate-gradient" style={{ animationDelay: '0.5s' }}>
+                  Interactive Graphs
                 </span>
               </h1>
 
-              <p className="mb-10 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48 max-w-3xl mx-auto">
-                Quickly turn your JSON data into stunning, interactive 3D graphs. Explore, zoom, and analyze your data with ease—perfect for developers and data enthusiasts looking to visualize information effortlessly.
+              <p className="mb-12 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48 max-w-4xl mx-auto leading-relaxed">
+                Quickly turn your JSON data into stunning, interactive <span className="text-purple-300 font-semibold">2D and 3D graphs</span>. Explore, zoom, and analyze your data with ease—perfect for developers and data enthusiasts looking to visualize information effortlessly.
               </p>
 
-              <div className="flex flex-col mb-8 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-6">
+              {/* CTA Buttons */}
+              <div className="flex flex-col mb-12 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-6">
                 <button
                   onClick={() => {
                     setStarted(true)
                     setIsOpen(false)
                   }}
-                  className="inline-flex justify-center items-center py-4 px-8 text-base font-medium text-center text-white bg-gradient-to-r from-purple-500 to-indigo-600 rounded-xl hover:from-purple-600 hover:to-indigo-700 focus:ring-4 focus:ring-indigo-300 focus:ring-offset-2 focus:outline-none transition-all duration-300 shadow-lg shadow-indigo-500/30"
+                  className="group inline-flex justify-center items-center py-4 px-10 text-base font-semibold text-center text-white bg-gradient-to-r from-purple-500 via-indigo-600 to-purple-600 rounded-xl hover:from-purple-600 hover:via-indigo-700 hover:to-purple-700 focus:ring-4 focus:ring-indigo-300/50 focus:ring-offset-2 focus:ring-offset-slate-900 focus:outline-none transition-all duration-300 shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/50 hover:scale-105 transform"
+                  aria-label="Start using the JSON to Graph editor"
                 >
-                  Editor
-                  <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <span>Get Started Free</span>
+                  <svg className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                   </svg>
                 </button>
 
-                <a href='https://jsonviewer.tools?utm_source=json2graph.com'
-                  className="inline-flex justify-center items-center py-4 px-8 text-base font-medium text-center text-indigo-100 rounded-xl border border-indigo-400/30 hover:bg-indigo-800/20 focus:ring-4 focus:ring-indigo-300/20 transition-all duration-300 backdrop-blur-sm"
+                <a 
+                  href='https://jsonviewer.tools?utm_source=json2graph.com'
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex justify-center items-center py-4 px-10 text-base font-semibold text-center text-indigo-100 rounded-xl border-2 border-indigo-400/50 hover:border-indigo-300 hover:bg-indigo-800/30 focus:ring-4 focus:ring-indigo-300/20 transition-all duration-300 backdrop-blur-sm hover:scale-105 transform"
+                  aria-label="Upgrade to premium features"
                 >
-                  Upgrade
-                  <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <span>Upgrade to Pro</span>
+                  <svg className="ml-2 w-5 h-5 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                   </svg>
                 </a>
               </div>
 
-              {/* Feature pills */}
-              <div className="flex flex-wrap justify-center gap-3 mt-10">
-                <span className="px-4 py-2 rounded-full bg-indigo-900/50 text-indigo-200 text-sm font-medium backdrop-blur-sm border border-indigo-700/30">Real-time Updates</span>
-                <span className="px-4 py-2 rounded-full bg-indigo-900/50 text-indigo-200 text-sm font-medium backdrop-blur-sm border border-indigo-700/30">Customizable Views</span>
-                <span className="px-4 py-2 rounded-full bg-indigo-900/50 text-indigo-200 text-sm font-medium backdrop-blur-sm border border-indigo-700/30">3D Visualization</span>
-                <span className="px-4 py-2 rounded-full bg-indigo-900/50 text-indigo-200 text-sm font-medium backdrop-blur-sm border border-indigo-700/30">Export Options</span>
+              {/* Feature pills with hover effects */}
+              <div className="flex flex-wrap justify-center gap-3 mt-12">
+                <span className="px-5 py-2.5 rounded-full bg-indigo-900/60 text-indigo-200 text-sm font-medium backdrop-blur-md border border-indigo-700/40 hover:bg-indigo-800/80 hover:border-indigo-600/60 transition-all duration-300 hover:scale-105 cursor-default">⚡ Real-time Updates</span>
+                <span className="px-5 py-2.5 rounded-full bg-indigo-900/60 text-indigo-200 text-sm font-medium backdrop-blur-md border border-indigo-700/40 hover:bg-indigo-800/80 hover:border-indigo-600/60 transition-all duration-300 hover:scale-105 cursor-default">🎨 Customizable Views</span>
+                <span className="px-5 py-2.5 rounded-full bg-indigo-900/60 text-indigo-200 text-sm font-medium backdrop-blur-md border border-indigo-700/40 hover:bg-indigo-800/80 hover:border-indigo-600/60 transition-all duration-300 hover:scale-105 cursor-default">🌐 3D Visualization</span>
+                <span className="px-5 py-2.5 rounded-full bg-indigo-900/60 text-indigo-200 text-sm font-medium backdrop-blur-md border border-indigo-700/40 hover:bg-indigo-800/80 hover:border-indigo-600/60 transition-all duration-300 hover:scale-105 cursor-default">💾 Export Options</span>
+              </div>
+
+              {/* Stats section */}
+              <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <div className="bg-slate-800/40 backdrop-blur-sm border border-indigo-800/30 rounded-2xl p-6 hover:bg-slate-800/60 transition-all duration-300">
+                  <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">100%</div>
+                  <div className="text-sm text-gray-400 mt-2">Free to Use</div>
+                </div>
+                <div className="bg-slate-800/40 backdrop-blur-sm border border-indigo-800/30 rounded-2xl p-6 hover:bg-slate-800/60 transition-all duration-300">
+                  <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">2D & 3D</div>
+                  <div className="text-sm text-gray-400 mt-2">Visualizations</div>
+                </div>
+                <div className="bg-slate-800/40 backdrop-blur-sm border border-indigo-800/30 rounded-2xl p-6 hover:bg-slate-800/60 transition-all duration-300">
+                  <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-red-400">Fast</div>
+                  <div className="text-sm text-gray-400 mt-2">Processing</div>
+                </div>
+                <div className="bg-slate-800/40 backdrop-blur-sm border border-indigo-800/30 rounded-2xl p-6 hover:bg-slate-800/60 transition-all duration-300">
+                  <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Easy</div>
+                  <div className="text-sm text-gray-400 mt-2">Export</div>
+                </div>
               </div>
             </div>
           </section>
+          </main>
         </>
         }
 

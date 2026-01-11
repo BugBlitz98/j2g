@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "JSON2Graph",
+  "name": "JSON to Graph Visualization",
+  "description": "Transform JSON data into stunning 2D and 3D graph visualizations",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +21,9 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#4338ca",
+  "background_color": "#0f172a",
+  "orientation": "any",
+  "scope": "/",
+  "lang": "en-US"
 }
